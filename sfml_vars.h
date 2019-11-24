@@ -8,6 +8,6 @@ sf::Clock time_elapsed; //main_clock
 
 sf::Clock spore_cycle;
 
-sf::VertexArray spore_vertex(sf::Points, 10000);
+sf::VertexArray spore_vertex(sf::Points);
 
 #endif // SFML_VARS_H_INCLUDED

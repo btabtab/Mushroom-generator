@@ -2,9 +2,8 @@
 #define SPORE_LIFE_CYCLE_H_INCLUDED
 
 int counter; int spore;
-int spore_count = 10000;
+int spore_count = 1;
 float spore_X; float spore_Y; int d;
-int move_max_reset;
 
 float R; float G; float B;
 void spore_life_cycle()
@@ -12,13 +11,16 @@ void spore_life_cycle()
 
         spore_X = spore_X + ABX;
         spore_Y = spore_Y + ABY;
+
+        spore_count++;
         spore = rand() % spore_count + 1;
+        spore_vertex.resize(spore_vertex.getVertexCount() +1);
         spore_vertex[spore].position = sf::Vector2f(spore_X, spore_Y);
         spore_vertex[spore].color = sf::Color(R, G, B);
 
         counter++;
-
-        std::cout << randmovmax << " " << randmovmin << " " << d <<" " << counter <<" " << spore_cycle.getElapsedTime().asMilliseconds() << std::endl;
+        std::cout << (spore_vertex.getVertexCount()) << std::endl;
+        //std::cout << randmovmax << " " << randmovmin << " " << d <<" " << counter <<" " << spore_cycle.getElapsedTime().asMilliseconds() << std::endl;
         randmovmax = counter + randmovmin;
         if(counter == 100)
             counter = 0;
@@ -26,7 +28,6 @@ void spore_life_cycle()
         if(spore_cycle.getElapsedTime().asMilliseconds() >= 1000)
         {
                 randmovmin++;randmovmax++;
-                move_max_reset++;
                 d = 0;
 
                 R = R + (rand() % 3 + 0) - (rand() % 3 + 0);
